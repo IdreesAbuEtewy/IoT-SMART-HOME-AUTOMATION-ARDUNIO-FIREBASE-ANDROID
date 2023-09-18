@@ -53,7 +53,7 @@ add adrduino code for the PZEM module to included in the project
 ![Screenshot](https://raw.github.com/DaBiQ/IoT-SMART-HOME-AUTOMATION-ARDUNIO-FIREBASE-ANDROID/master/SCRRENSHOTS/18.jpg)
 ![Screenshot](https://raw.github.com/DaBiQ/IoT-SMART-HOME-AUTOMATION-ARDUNIO-FIREBASE-ANDROID/master/SCRRENSHOTS/19.jpg)
 ![Screenshot](https://raw.github.com/DaBiQ/IoT-SMART-HOME-AUTOMATION-ARDUNIO-FIREBASE-ANDROID/master/SCRRENSHOTS/20.jpg)
-![Screenshot](https://raw.github.com/DaBiQ/IoT-SMART-HOME-AUTOMATION-ARDUNIO-FIREBASE-ANDROID/master/SCRRENSHOTS/21.jpg)
+
 ![Screenshot](https://raw.github.com/DaBiQ/IoT-SMART-HOME-AUTOMATION-ARDUNIO-FIREBASE-ANDROID/master/SCRRENSHOTS/22.jpg)
 ![Screenshot](https://raw.github.com/DaBiQ/IoT-SMART-HOME-AUTOMATION-ARDUNIO-FIREBASE-ANDROID/master/SCRRENSHOTS/23.jpg)
 
