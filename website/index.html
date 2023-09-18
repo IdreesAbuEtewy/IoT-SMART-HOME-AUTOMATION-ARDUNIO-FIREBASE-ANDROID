@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Multi toggle</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body>
+
+
+
+
+
+	<script>
+
+var TxtRotate = function(el, toRotate, period) {
+  this.toRotate = toRotate;
+  this.el = el;
+  this.loopNum = 0;
+  this.period = parseInt(period, 10) || 2000;
+  this.txt = '';
+  this.tick();
+  this.isDeleting = false;
+};
+
+TxtRotate.prototype.tick = function() {
+  var i = this.loopNum % this.toRotate.length;
+  var fullTxt = this.toRotate[i];
+
+  if (this.isDeleting) {
+    this.txt = fullTxt.substring(0, this.txt.length - 1);
+  } else {
+    this.txt = fullTxt.substring(0, this.txt.length + 1);
+  }
+
+  this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+  var that = this;
+  var delta = 300 - Math.random() * 100;
+
+  if (this.isDeleting) { delta /= 2; }
+
+  if (!this.isDeleting && this.txt === fullTxt) {
+    delta = this.period;
+    this.isDeleting = true;
+  } else if (this.isDeleting && this.txt === '') {
+    this.isDeleting = false;
+    this.loopNum++;
+    delta = 500;
+  }
+
+  setTimeout(function() {
+    that.tick();
+  }, delta);
+};
+
+window.onload = function() {
+  var elements = document.getElementsByClassName('txt-rotate');
+  for (var i=0; i<elements.length; i++) {
+    var toRotate = elements[i].getAttribute('data-rotate');
+    var period = elements[i].getAttribute('data-period');
+    if (toRotate) {
+      new TxtRotate(elements[i], JSON.parse(toRotate), period);
+    }
+  }
+  // INJECT CSS
+  var css = document.createElement("style");
+  css.type = "text/css";
+  css.innerHTML = ".txt-rotate > .wrap { border-right: 0.08em solid #ff0000 }";
+  document.body.appendChild(css);
+};
+
+	</script>
+
+
+<div " id="login-container">
+	<div class="login-box">
+	  <h2>Login</h2>
+	  <form id="login-form">
+		<div class="user-box">
+			<input type="email" id="email" required>
+		  <label>Email</label>
+		</div>
+		<div class="user-box">
+			<input type="password" id="password" required>
+		  <label>Password</label>
+		</div>
+		<div id="error-message"></div>
+		<a  id="login-button">
+		  <span></span>
+		  <span></span>
+		  <span></span>
+		  <span></span>
+		  
+		  Login
+		 </a>
+		 
+	  </form>
+	</div>
+  </div>
+
+
+	  <div id="page-container" style="display: none;">
+		<div class="animate-charcter">
+			<h1 > ESP8266 web Server</h1>
+		</div>
+		<div class="animate-charcter">
+			<p> This Project Done by</p>
+		</div>
+
+	<span
+	class="txt-rotate"
+	data-period="2000"
+	data-rotate='[ "Idrees Abu Etewy.", "Mohammed Alnammi.", "Ahmad Abu ALAjeen."]'></span>
+</h1>	
+
+	
+
+<h2 class="texth">Speech Recognition for Ports</h2>
+
+<p><button class="custom-btn btn-12" type="button" id="speechButton"><span>Click!</span><span style="font-size: 15px;">Speech to Text</span></button> &nbsp; <span id="action"></span></p> 
+<i style="color: white;" class="fas fa-microphone fa-3x"></i>
+<div id="output" class="hide"></div>
+
+
+	<div class="wrapper">	
+		<div class="progress" id="port1">
+		 <div class="pr1">
+		  <h1 > PORT 1</h1>
+	     </div>
+			<a class = "icon1" >
+				<i class="fas fa-4x fa-bath"></i>
+			</a>
+			<div class= "custom-toggle-btn toggle-btn1" id="unact1">
+				<div class= "inner-circle">
+	
+				</div>
+			</div>
+			<div class= "custom-toggle-btn toggle-btn1 active" id="act1" >
+				<div class= "inner-circle">
+	
+				</div>
+			</div>
+			<div class="scheduler">
+				<label>Days:</label>
+				<input type="checkbox" id="port1-day1" value="Monday">
+				<label for="port1-day1">Monday</label>
+				<input type="checkbox" id="port1-day2" value="Tuesday">
+				<label for="port1-day2">Tuesday</label>
+				<input type="checkbox" id="port1-day3" value="Wednesday">
+				<label for="port1-day3">Wednesday</label>
+				<input type="checkbox" id="port1-day4" value="Thursday">
+				<label for="port1-day4">Thursday</label>
+				<input type="checkbox" id="port1-day5" value="Friday">
+				<label for="port1-day5">Friday</label>
+				<input type="checkbox" id="port1-day6" value="Saturday">
+				<label for="port1-day6">Saturday</label>
+				<input type="checkbox" id="port1-day7" value="Sunday">
+				<label for="port1-day7">Sunday</label>
+				<label>On Time:</label>
+				<input type="time" id="port1-on-time" step="3600">
+				<label>Off Time:</label>
+				<input type="time" id="port1-off-time" step="3600">
+				<div class="btn">
+				<button class="apply-btn custom-btn btn-7 button" data-port="1">Apply</button>
+			    </div>
+			</div>
+		</div>
+
+		<div class="progress" id="port2">
+			<div class="pr1">
+				<h1 > PORT 2</h1>
+			   </div>
+			<a class = "icon1" >
+				<i class="fas fa-4x fa-utensils"></i>
+			</a>
+			<div class= "toggle-btn2" id="unact2">
+				<div class= "inner-circle">
+	
+				</div>
+			</div>
+			<div class= "toggle-btn2 active" id="act2" >
+				<div class= "inner-circle">
+	
+				</div>
+			</div>
+			<div class="scheduler">
+				<label>Days:</label>
+				<input type="checkbox" id="port2-day1" value="Monday">
+				<label for="port2-day1">Monday</label>
+				<input type="checkbox" id="port2-day2" value="Tuesday">
+				<label for="port2-day2">Tuesday</label>
+				<input type="checkbox" id="port2-day3" value="Wednesday">
+				<label for="port2-day3">Wednesday</label>
+				<input type="checkbox" id="port2-day4" value="Thursday">
+				<label for="port2-day4">Thursday</label>
+				<input type="checkbox" id="port2-day5" value="Friday">
+				<label for="port2-day5">Friday</label>
+				<input type="checkbox" id="port2-day6" value="Saturday">
+				<label for="port2-day6">Saturday</label>
+				<input type="checkbox" id="port2-day7" value="Sunday">
+				<label for="port2-day7">Sunday</label>
+				<label>On Time:</label>
+				<input type="time" id="port2-on-time" step="3600">
+				<label>Off Time:</label>
+				<input type="time" id="port2-off-time" step="3600">
+				<div class="btn">
+				<button class="apply-btn custom-btn btn-7 button" data-port="2">Apply</button></div>
+			</div>
+		</div>
+		
+		<div class="progress" id="port3">
+			<div class="pr1">
+				<h1 > PORT 3</h1>
+			   </div>
+			<a class = "icon1" >
+				<i class="fas fa-4x fa-tv"></i>
+			</a>
+			<div class= "toggle-btn3" id="unact3">
+				<div class= "inner-circle">
+	
+				</div>
+			</div>
+			<div class= "toggle-btn3 active" id="act3" >
+				<div class= "inner-circle">
+	
+				</div>
+			</div>
+			<div class="scheduler">
+				<label>Days:</label>
+				<input type="checkbox" id="port3-day1" value="Monday">
+				<label for="port3-day1">Monday</label>
+				<input type="checkbox" id="port3-day2" value="Tuesday">
+				<label for="port3-day2">Tuesday</label>
+				<input type="checkbox" id="port3-day3" value="Wednesday">
+				<label for="port3-day3">Wednesday</label>
+				<input type="checkbox" id="port3-day4" value="Thursday">
+				<label for="port3-day4">Thursday</label>
+				<input type="checkbox" id="port3-day5" value="Friday">
+				<label for="port3-day5">Friday</label>
+				<input type="checkbox" id="port3-day6" value="Saturday">
+				<label for="port3-day6">Saturday</label>
+				<input type="checkbox" id="port3-day7" value="Sunday">
+				<label for="port3-day7">Sunday</label>
+				<label>On Time:</label>
+				<input type="time" id="port3-on-time" step="3600">
+				<label>Off Time:</label>
+				<input type="time" id="port3-off-time" step="3600">
+				<div class="btn">
+				<button class="apply-btn custom-btn btn-7 button" data-port="3">Apply</button></div>
+			</div>
+		</div>
+		<div class="progress" id="port4">
+			<div class="pr1">
+				<h1 > PORT 4</h1>
+			   </div>
+			<a class = "icon1" >
+				<i class="fas fa-4x fa-bed"></i>
+			</a>
+			<div class= "toggle-btn4" id="unact4">
+				<div class= "inner-circle">
+				</div>
+			</div>
+			<div class= "toggle-btn4 active" id="act4" >
+				<div class= "inner-circle">
+	
+				</div>
+			</div>
+			<div class="scheduler">
+				<label>Days:</label>
+				<input type="checkbox" id="port4-day1" value="Monday">
+				<label for="port4-day1">Monday</label>
+				<input type="checkbox" id="port4-day2" value="Tuesday">
+				<label for="port4-day2">Tuesday</label>
+				<input type="checkbox" id="port4-day3" value="Wednesday">
+				<label for="port4-day3">Wednesday</label>
+				<input type="checkbox" id="port4-day4" value="Thursday">
+				<label for="port4-day4">Thursday</label>
+				<input type="checkbox" id="port4-day5" value="Friday">
+				<label for="port4-day5">Friday</label>
+				<input type="checkbox" id="port4-day6" value="Saturday">
+				<label for="port4-day6">Saturday</label>
+				<input type="checkbox" id="port4-day7" value="Sunday">
+				<label for="port4-day7">Sunday</label>
+				<label>On Time:</label>
+				<input type="time" id="port4-on-time" step="3600">
+				<label>Off Time:</label>
+				<input type="time" id="port4-off-time" step="3600">
+				<div class="btn">
+				<button class="apply-btn custom-btn btn-7 button" data-port="4">Apply</button></div>
+			</div>
+		</div>	
+
+		<div class="progress" id="port5">
+			<div class="pr1">
+				<h1 > PORT 5</h1>
+			   </div>
+			<a class = "icon1" >
+				<i class="fas fa-4x fa-bolt"></i>
+			</a>
+			<div class= "toggle-btn5" id="unact5">
+				<div class= "inner-circle">
+	
+				</div>
+			</div>
+			<div class= "toggle-btn5 active" id="act5" >
+				<div class= "inner-circle">
+	
+				</div>
+			</div>
+			<div class="scheduler">
+				<label>Days:</label>
+				<input type="checkbox" id="port5-day1" value="Monday">
+				<label for="port5-day1">Monday</label>
+				<input type="checkbox" id="port5-day2" value="Tuesday">
+				<label for="port5-day2">Tuesday</label>
+				<input type="checkbox" id="port5-day3" value="Wednesday">
+				<label for="port5-day3">Wednesday</label>
+				<input type="checkbox" id="port5-day4" value="Thursday">
+				<label for="port5-day4">Thursday</label>
+				<input type="checkbox" id="port5-day5" value="Friday">
+				<label for="port5-day5">Friday</label>
+				<input type="checkbox" id="port5-day6" value="Saturday">
+				<label for="port5-day6">Saturday</label>
+				<input type="checkbox" id="port5-day7" value="Sunday">
+				<label for="port5-day7">Sunday</label>
+				<label>On Time:</label>
+				<input type="time" id="port5-on-time" step="3600">
+				<label>Off Time:</label>
+				<input type="time" id="port5-off-time" step="3600">
+				<div class="btn">
+				<button class="apply-btn custom-btn btn-7 button" data-port="5">Apply</button></div>
+			</div>
+		</div>	
+
+		
+		<div class="progress" id="port6">
+			<div class="pr1">
+				<h1 > PORT 6</h1>
+			   </div>
+			<a class = "icon1" >
+				<i class="fas fa-4x fa-server"></i>
+			</a>
+			<div class= "custom-toggle-btn toggle-btn6" id="unact6">
+				<div class= "inner-circle">
+	
+				</div>
+			</div>
+			<div class= "custom-toggle-btn toggle-btn6 active" id="act6" >
+				<div class= "inner-circle">
+				</div>
+			</div>
+			<div class="scheduler">
+				<label>Days:</label>
+				<input type="checkbox" id="port6-day1" value="Monday">
+				<label for="port6-day1">Monday</label>
+				<input type="checkbox" id="port6-day2" value="Tuesday">
+				<label for="port6-day2">Tuesday</label>
+				<input type="checkbox" id="port6-day3" value="Wednesday">
+				<label for="port6-day3">Wednesday</label>
+				<input type="checkbox" id="port6-day4" value="Thursday">
+				<label for="port6-day4">Thursday</label>
+				<input type="checkbox" id="port6-day5" value="Friday">
+				<label for="port6-day5">Friday</label>
+				<input type="checkbox" id="port6-day6" value="Saturday">
+				<label for="port6-day6">Saturday</label>
+				<input type="checkbox" id="port6-day7" value="Sunday">
+				<label for="port6-day7">Sunday</label>
+				<label>On Time:</label>
+				<input type="time" id="port6-on-time" step="3600">
+				<label>Off Time:</label>
+				<input type="time" id="port6-off-time" step="3600">
+				<div class="btn"> 
+				<button class="apply-btn custom-btn btn-7 button" data-port="6">Apply</button>
+			</div>
+			</div>
+		</div>	
+		<div class="footer">
+			<p> All rights reserved. | DaBiQ   </p>
+		</div>
+	  
+		
+	</div>
+
+	
+	
+	
+	</div>
+
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="script.js"></script>
+</body>
+</html>
