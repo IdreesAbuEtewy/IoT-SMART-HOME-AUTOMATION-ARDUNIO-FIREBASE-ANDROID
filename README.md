@@ -1,7 +1,6 @@
 
 # IoT-SMART-HOME-AUTOMATION-ARDUNIO-FIREBASE-ESP8266-ANDROID-MyHome
 Iot based Smart Home Automation connected with firebase and Android
-Also integrated with google assistant and the telegram using dialogflow
 ESP8266 is main controller in IoT
 
 # What sensor and Devices are use?
