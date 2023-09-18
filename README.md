@@ -26,6 +26,8 @@ information in the mobile. User will get the information such as energy consumpt
 power consumption, current consumption, bill (in rs). User can see the graph of the
 consumption.
 
+# How to use
+After build the andriod app with your firebase config and link it with Auth and databaes of the firebase and change the website firebase config to yours, you need to get the userid from the firebase , (  i include a fragment to print it in the dashboard) and replace it in the arduino code , and java script code for website for define the path.
 #TO DO 
 add adrduino code for the PZEM module to included in the project 
 # Screenshots of the project circle:
